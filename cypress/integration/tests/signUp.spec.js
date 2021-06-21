@@ -4,7 +4,7 @@ import SignUpPage from '../../pageObjects/signUpPage'
 describe('Create an account', () => {
     const signUp = new SignUpPage()
 
-    it('should navigate to the page', () => {  
+    before(() => {
         cy.visit('http://automationpractice.com/index.php')
     })
 
@@ -26,5 +26,21 @@ describe('Create an account', () => {
         signUp.getMonthOfBirthDropdown().select('November')
         signUp.getYearOfBirthDropdown().select('1997')
         signUp.getNewsletter().click()
+    })
+
+    it('should fill my address', () => {
+        signUp.getFirstNameInput().clear().type('Carla')
+        signUp.getLastNameInput().clear().type('Gomez')
+        signUp.getAddressInput().type('8400 NW 25 ST SUITE 100')
+        signUp.getCityInput().type('Doral')
+        signUp.getPostalCodeInput().type('33198')
+        signUp.getCountryDropdown().select('United States')
+        signUp.getStateDropdown().select('Florida')
+        signUp.getMobilePhoneInput().type('15042010052')
+        signUp.getAliasInput().clear().type('Alias')
+    })
+
+    it('should register', () => {
+        signUp.getRegisterButton().click()
     })
 })
