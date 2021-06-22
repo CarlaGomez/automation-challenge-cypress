@@ -13,8 +13,12 @@ describe('Create an account', () => {
     })
 
     it('should enter email', () => {
-        signUp.getEmailInput().type('correoparapruebaspruebas@gmail.com')
+        const faker = require("faker");
+        let email = faker.internet.email()
+
+        signUp.getEmailInput().type(email)
         signUp.getCreateAccountButton().should('be.visible').click()
+        cy.wait(4000) 
     })
 
     it('should fill my personal information', () => {

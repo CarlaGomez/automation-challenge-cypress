@@ -19,11 +19,11 @@ class SignUpPage {
     }
 
     getCustomerFirstNameInput(){
-        return cy.get('#account-creation_form > :nth-child(1) > :nth-child(3) > :nth-child(2)');
+        return cy.get('#customer_firstname');
     }
 
     getCustomerLastNameInput(){
-        return cy.get('#account-creation_form > :nth-child(1) > :nth-child(4) > :nth-child(2)');
+        return cy.get('#customer_lastname');
     }
 
     getPasswordInput(){
@@ -49,11 +49,11 @@ class SignUpPage {
     //Get all the elements related to the address
 
     getFirstNameInput(){
-        return cy.get('#account-creation_form > :nth-child(2) > :nth-child(2) > :nth-child(2)');
+        return cy.get('#firstname')
     }
 
     getLastNameInput(){
-        return cy.get('#account-creation_form > :nth-child(2) > :nth-child(3) > :nth-child(2)');
+        return cy.get('#lastname');
     }
 
     getAddressInput(){
