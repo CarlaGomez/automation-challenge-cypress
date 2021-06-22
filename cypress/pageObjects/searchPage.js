@@ -11,6 +11,10 @@ class Search {
     getSearchBar(){
         return cy.get('#search_query_top');
     }
+
+    getSortDropdown(){
+        return cy.get('#selectProductSort');
+    }
 }
 
 export default Search
