@@ -15,6 +15,10 @@ class Search {
     getSortDropdown(){
         return cy.get('#selectProductSort');
     }
+
+    getItemList(){
+        return cy.get('.product-container > ');
+    }
 }
 
 export default Search

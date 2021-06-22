@@ -25,4 +25,8 @@ describe('Search using the search bar and sort results', () =>{
     it('should sort the results', () => {
         search.getSortDropdown().select('Price: Lowest first');
     })
+
+    it('should go to the detail of the item', () =>{
+        search.getItemList().eq(0).click();
+    })
 })
