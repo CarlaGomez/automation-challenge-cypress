@@ -24,3 +24,14 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-wait-until';
+import SignUpPage from '../pageObjects/signUpPage'
+
+const signUp = new SignUpPage()
+
+Cypress.Commands.add('login', () => { 
+    cy.visit('/')
+    signUp.signUpButton().should('be.visible').click();
+    cy.get('[data-validate=isEmail]').eq(1).type('carlagomezp1@gmail.com')
+    cy.get('[data-validate=isPasswd]').type('Carlita01')
+    cy.get('button[type=submit]').contains('Sign in').click()
+ })

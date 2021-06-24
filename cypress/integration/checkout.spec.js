@@ -1,28 +1,32 @@
 import Checkout from '../pageObjects/checkoutPage'
-import Search from '../pageObjects/searchPage';
 
 const checkout = new Checkout()
-const search = new Search()
 
-export function addItemToCart(){
+decribes('Complete order', () => {
 
-    //View the item detail page and add it to cart
-    search.itemList().eq(0).click();
-    cy.waitUntil(() => checkout.addToCart().should('be.visible').click());
+    beforeEach(() => {
+        cy.login();
+    })
 
-    cy.waitUntil(() => checkout.succesfulMessage().should('be.visible')
-    .contains('Product successfully added to your shopping cart'));
-
-    checkout.closeModal().click();
-
+    it('Goes to the cart', ()=>{
     cy.waitUntil(() => checkout.goToCart().should('be.visible').click());
-}
+    })
 
-export function proceed(){
-    checkout.proceedToCheckout().click()
-}
+    it('Checks the summary of the product and takes the user to the address tab', () => {
+        checkout.proceedToCheckout().click()
+    })
 
-export function completeOrder(){
-    checkout.paymentMethod().click()
-    checkout.proceedToCheckout().click()
-}
+    it('Checks the address and takes the user to the shipping tab', () => {
+        checkout.proceedToCheckout().click()
+    })
+
+    it('Checks the shipping and takes the user to the payment tab', () => {
+        checkout.acceptTerms().check()
+        checkout.proceedToCheckout().click()
+    })
+
+    it('Selects a payment method and completes the purchase', () => {
+        checkout.paymentMethod().click()
+        checkout.proceedToCheckout().click()
+    })   
+})
