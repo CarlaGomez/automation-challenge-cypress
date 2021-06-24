@@ -4,7 +4,7 @@ class SignUpPage {
         return cy.get('.login');
     }
 
-    emailInput(){
+    email(){
         return cy.get('#email_create');
     }
 
@@ -76,7 +76,7 @@ class SignUpPage {
         return cy.get('#id_country');
     }
 
-    mobilePhon(){
+    mobilePhone(){
         return cy.get('#phone_mobile');
     }
 

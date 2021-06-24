@@ -9,13 +9,24 @@ class Checkout {
     }
     
     closeModal(){
-        return cy.get('#layer_cart > .clearfix').find('[title="Close window"]')
+        return cy.get('#layer_cart > .clearfix').find('[title="Close window"]');
     }
 
     goToCart(){
         return cy.get('[title="View my shopping cart"]');
     }
     
+    proceedToCheckout(){
+        return cy.get('.cart_navigation > .button > span');
+    }
+
+    acceptTerms(){
+        return cy.get('input[type=checkbox]');
+    }
+
+    paymentMethod(){
+        return cy.get('[title="Pay by bank wire"]');
+    }
 }
 
 export default Checkout
