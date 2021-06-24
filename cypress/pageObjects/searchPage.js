@@ -1,22 +1,22 @@
 class Search {
 
-    getCategory(){
+    category(){
         return cy.get('ul.submenu-container.clearfix.first-in-line-xs');
     }
 
-    getSubcategory(){
+    subcategory(){
         return cy.get('.sf-menu li li li a').contains('Evening');
     }
 
-    getSearchBar(){
+    searchBar(){
         return cy.get('#search_query_top');
     }
 
-    getSortDropdown(){
+    sort(){
         return cy.get('#selectProductSort');
     }
 
-    getItemList(){
+    itemList(){
         return cy.get('.product-container > ');
     }
 }

@@ -11,22 +11,22 @@ before(() => {
 describe('Search using navigation', () => {
 
     it('should take the user to Evening dresses using the navigation', () => {
-        search.getCategory().eq(0).invoke('show');
-        search.getSubcategory().click();
+        search.category().eq(0).invoke('show');
+        search.subcategory().click();
     })
 })
 
 describe('Search using the search bar and sort results', () =>{
     
     it('should seach for the item that the user enters', () => {
-        search.getSearchBar().type('Dress{Enter}');
+        search.searchBar().type('Dress{Enter}');
     })
 
     it('should sort the results', () => {
-        search.getSortDropdown().select('Price: Lowest first');
+        search.sort().select('Price: Lowest first');
     })
 
     it('should go to the detail of the item', () =>{
-        search.getItemList().eq(0).click();
+        search.itemList().eq(0).click();
     })
 })

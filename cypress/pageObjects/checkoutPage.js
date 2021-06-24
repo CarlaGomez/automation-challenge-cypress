@@ -1,19 +1,19 @@
 class Checkout {
 
-    getAddToCart(){
+    addToCart(){
         return cy.get('#add_to_cart > .exclusive');
     }
 
-    getSuccesfulMessage(){
+    succesfulMessage(){
         return cy.get('.layer_cart_product > h2');
     }
     
-    getCloseModal(){
+    closeModal(){
         return cy.get('#layer_cart > .clearfix').find('[title="Close window"]')
     }
 
-    getGoToCart(){
-        return cy.get('[title="View my shopping cart"] > b');
+    goToCart(){
+        return cy.get('[title="View my shopping cart"]');
     }
     
 }

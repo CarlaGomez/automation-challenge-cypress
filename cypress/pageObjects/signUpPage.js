@@ -1,90 +1,90 @@
 class SignUpPage {
     
-    getSignUpButton(){
+    signUpButton(){
         return cy.get('.login');
     }
 
-    getEmailInput(){
+    emailInput(){
         return cy.get('#email_create');
     }
 
-    getCreateAccountButton(){
+    createAccount(){
         return cy.get('#SubmitCreate > span');
     }
 
     //Get all the elements related to the personal information
 
-    getTitleRadioButton(){
+    title(){
         return cy.get('#id_gender1');
     }
 
-    getCustomerFirstNameInput(){
+    customerFirstName(){
         return cy.get('#customer_firstname');
     }
 
-    getCustomerLastNameInput(){
+    customerLastName(){
         return cy.get('#customer_lastname');
     }
 
-    getPasswordInput(){
+    password(){
         return cy.get('#passwd');
     }
 
-    getDayOfBirthDropdown(){
+    dayOfBirth(){
         return cy.get('#days');
     }
 
-    getMonthOfBirthDropdown(){
+    monthOfBirth(){
         return cy.get('#months');
     }
 
-    getYearOfBirthDropdown(){
+    yearOfBirth(){
         return cy.get('#years');
     }
     
-    getNewsletter(){
+    newsletter(){
         return cy.get('#newsletter');
     }
 
     //Get all the elements related to the address
 
-    getFirstNameInput(){
+    firstName(){
         return cy.get('#firstname')
     }
 
-    getLastNameInput(){
+    lastName(){
         return cy.get('#lastname');
     }
 
-    getAddressInput(){
+    address(){
         return cy.get('#address1');
     }
 
-    getCityInput(){
+    city(){
         return cy.get('#city');
     }
 
-    getStateDropdown(){
+    state(){
         return cy.get('#id_state');
     }
 
-    getPostalCodeInput(){
+    postalCode(){
         return cy.get('#postcode');
     }
 
-    getCountryDropdown(){
+    country(){
         return cy.get('#id_country');
     }
 
-    getMobilePhoneInput(){
+    mobilePhon(){
         return cy.get('#phone_mobile');
     }
 
-    getAliasInput(){
+    alias(){
         return cy.get('#alias');
     }
 
-    getRegisterButton(){
+    register(){
         return cy.get('#submitAccount > span');
     }   
 }
