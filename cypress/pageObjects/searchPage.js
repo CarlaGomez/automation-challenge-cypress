@@ -17,8 +17,14 @@ class Search {
     }
 
     itemList(){
-        return cy.get('.product-container > ');
+        return cy.get('#center_column').find('.product-name');
+    }
+
+    //Assertions
+
+    visitedCategory(){
+        return cy.get('.cat-name');
     }
 }
 
-export default Search
+export default Search;

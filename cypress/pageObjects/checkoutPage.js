@@ -27,6 +27,12 @@ class Checkout {
     paymentMethod(){
         return cy.get('[title="Pay by bank wire"]');
     }
+
+    //Assertions 
+
+    cartQuantity(){
+        return cy.get('.cart_quantity');
+    }
 }
 
-export default Checkout
+export default Checkout;

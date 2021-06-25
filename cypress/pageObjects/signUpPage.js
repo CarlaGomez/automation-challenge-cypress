@@ -5,7 +5,7 @@ class SignUpPage {
     }
 
     email(){
-        return cy.get('#email_create');
+        return cy.get('[data-validate=isEmail]').eq(0);
     }
 
     createAccount(){
@@ -27,7 +27,7 @@ class SignUpPage {
     }
 
     password(){
-        return cy.get('#passwd');
+        return cy.get('[data-validate=isPasswd]');
     }
 
     dayOfBirth(){
@@ -87,6 +87,12 @@ class SignUpPage {
     register(){
         return cy.get('#submitAccount > span');
     }   
+
+    // Assertions 
+
+    account(){
+        return cy.get('.account');
+    }
 }
 
-export default SignUpPage
+export default SignUpPage;

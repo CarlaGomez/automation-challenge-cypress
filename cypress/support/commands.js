@@ -25,13 +25,33 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-wait-until';
 import SignUpPage from '../pageObjects/signUpPage'
+import Search from '../pageObjects/searchPage';
 
 const signUp = new SignUpPage()
+const search = new Search()
 
 Cypress.Commands.add('login', () => { 
     cy.visit('/')
     signUp.signUpButton().should('be.visible').click();
-    cy.get('[data-validate=isEmail]').eq(1).type('carlagomezp1@gmail.com')
-    cy.get('[data-validate=isPasswd]').type('Carlita01')
+    cy.get('[data-validate=isEmail]').eq(1).type('Judd_Senger91@gmail.com')
+    cy.get('[data-validate=isPasswd]').type('Test1234*')
     cy.get('button[type=submit]').contains('Sign in').click()
- })
+    signUp.account().should('be.visible');
+})
+
+Cypress.Commands.add('searches', () => {
+    search.searchBar().type('Dress{Enter}');
+})
+
+Cypress.Commands.add('viewItem', () => {
+    cy.searches()
+    search.itemList().should('be.visible')
+        .should('exist')
+        .should('have.length', 7)
+        .eq(0)
+        .click();
+})
+
+Cypress.Commands.add('logout', () => { 
+    cy.get('.logout').click()
+})
