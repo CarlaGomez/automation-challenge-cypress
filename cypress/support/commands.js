@@ -29,12 +29,14 @@ import Search from '../pageObjects/searchPage';
 
 const signUp = new SignUpPage()
 const search = new Search()
+const USER_NAME = Cypress.env('USER_NAME');
+const PASSWORD = Cypress.env('PASSWORD');
 
 Cypress.Commands.add('login', () => { 
     cy.visit('/')
     signUp.signUpButton().should('be.visible').click();
-    cy.get('[data-validate=isEmail]').eq(1).type('Judd_Senger91@gmail.com')
-    cy.get('[data-validate=isPasswd]').type('Test1234*')
+    cy.get('[data-validate=isEmail]').eq(1).type(USER_NAME)
+    cy.get('[data-validate=isPasswd]').type(PASSWORD)
     cy.get('button[type=submit]').contains('Sign in').click()
     signUp.account().should('be.visible');
 })

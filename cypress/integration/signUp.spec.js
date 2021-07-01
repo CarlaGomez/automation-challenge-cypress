@@ -4,19 +4,22 @@ import CommonSelectors from '../pageObjects/commonSelectorsPage'
 const signUp = new SignUp()
 const commonSelectors = new CommonSelectors()
   
-before(() =>{
+before(function (){
     cy.visit('/');
     signUp.signUpButton().should('be.visible').click();
     commonSelectors.header().should('have.text', 'Authentication');
+    cy.fixture('signUpData').then(function (signUpData) {
+        this.signUpData = signUpData
+    })
 })
 
 after(()=> {
     cy.logout()
 })
 
-describe('Sign up', () => {
+describe('Sign up', function () {
     
-    it('Enters the email', () => {
+    it('Enters the email', function () {
         //Generate random email
         const faker = require("faker")
 
@@ -30,40 +33,40 @@ describe('Sign up', () => {
         cy.waitUntil(()=>commonSelectors.header().should('have.text', 'Create an account'))
     })
 
-    it('Fills my personal information', () => {
+    it('Fills my personal information', function () {
         cy.waitUntil(()=>signUp.title().check().should('be.checked'))
 
-        signUp.customerFirstName().type('Carla')
+        signUp.customerFirstName().type(this.signUpData.firstName)
 
-        signUp.customerLastName().type('Gomez')
+        signUp.customerLastName().type(this.signUpData.lastName)
 
-        signUp.password().type('Test1234*')
+        signUp.password().type(this.signUpData.password)
 
-        signUp.dayOfBirth().select('15')
+        signUp.dayOfBirth().select(this.signUpData.dayOfBirth)
 
-        signUp.monthOfBirth().select('November')
+        signUp.monthOfBirth().select(this.signUpData.monthOfBirth)
 
-        signUp.yearOfBirth().select('1997')
+        signUp.yearOfBirth().select(this.signUpData.yearOfBirth)
 
         signUp.newsletter().check()
 
-        signUp.firstName().clear().type('Carla')
+        signUp.firstName().clear().type(this.signUpData.firstName)
 
-        signUp.lastName().clear().type('Gomez')
+        signUp.lastName().clear().type(this.signUpData.lastName)
 
-        signUp.address().type('8400 NW 25 ST SUITE 100')
+        signUp.address().type(this.signUpData.address)
 
-        signUp.city().type('Doral')
+        signUp.city().type(this.signUpData.city)
 
-        signUp.postalCode().type('33198')
+        signUp.postalCode().type(this.signUpData.postalCode)
 
-        signUp.country().select('United States')
+        signUp.country().select(this.signUpData.country)
 
-        signUp.state().select('Florida')
+        signUp.state().select(this.signUpData.state)
 
-        signUp.mobilePhone().type('15042010052')
+        signUp.mobilePhone().type(this.signUpData.mobilePhone)
 
-        signUp.alias().clear().type('Alias')
+        signUp.alias().clear().type(this.signUpData.alias)
 
         signUp.register().click()
         
