@@ -11,6 +11,7 @@ describe('Complete order', () => {
     })
 
     beforeEach(() => {
+        // preserve cookies
         cy.getCookies().then(cookies => {
             const namesOfCookies = cookies.map(c => c.name)
             Cypress.Cookies.preserveOnce(...namesOfCookies)

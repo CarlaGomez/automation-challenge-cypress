@@ -8,6 +8,7 @@ before(function (){
     cy.visit('/');
     signUp.signUpButton().should('be.visible').click();
     commonSelectors.header().should('have.text', 'Authentication');
+    //Call data from fixtures
     cy.fixture('signUpData').then(function (signUpData) {
         this.signUpData = signUpData
     })
