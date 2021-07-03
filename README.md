@@ -37,7 +37,7 @@ The test cases are documented in the test management tool TestBench. To access t
 ### Pre-requisites
 
 * Node.js needs to be installed
-* Go to https://developer.marvel.com and create an account to get a public and a private API key
+* Go to https://developer.marvel.com and create an account to get a public and a private API key (This is Optional, is required for step 3 of intallation)
 
 ### installation
 
