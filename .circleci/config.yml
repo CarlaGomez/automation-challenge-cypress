@@ -5,3 +5,4 @@ workflows:
   build:
     jobs:
       - cypress/run
+          command: npx cypress run --env allure=true
