@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.8.2",
+    "allure-commandline": "^2.13.8",
     "cypress-wait-until": "^1.7.1",
     "faker": "^5.5.3"
   }
