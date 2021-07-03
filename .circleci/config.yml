@@ -1,8 +1,47 @@
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1
-workflows:
+  allure: ayte/allure@0.1.3
+
+jobs:
   build:
-    jobs:
-      - cypress/run
-          command: npx cypress run --env allure=true
+    docker:
+      - image: circleci/node:latest-browsers
+        environment:
+          ## this enables colors in the output
+          TERM: xterm
+    working_directory: /tmp/workspace
+    steps:
+      - checkout
+      # Make `allure` command available by installing dependencies from `ayte` orb
+      - allure/install
+      - restore_cache:
+          name: Restore `package.json` cache
+          keys:
+            - v3-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v3-deps-{{ .Branch }}
+            - v3-deps
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - save_cache:
+          name: Save cache both yarn and Cypress!
+          key: v3-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.cache  ## cache both yarn and Cypress!
+      - run:
+          name: Run cypress tests
+          command: yarn cy:run
+      - run:
+          name: Generate `Allure report` html report
+          when: always
+          # Run command from orb more info https://github.com/ayte-io/circle-ci-orb-allure
+          command: allure generate
+      - store_artifacts:
+          name: Uploading cypress/videos artifacts
+          path: cypress/videos
+      - store_artifacts:
+          name: Uploading cypress/screenshots artifacts
+          path: cypress/screenshots
+      - store_artifacts:
+          name: Uploading allure-report artifacts
+          path: allure-report
