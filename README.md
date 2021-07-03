@@ -49,7 +49,7 @@ The test cases are documented in the test management tool TestBench. To access t
    ```sh
    npm install
    ```
-3. Create a file in the root folder of the project an name it `cypress.env.json`, in the file copy and paste the code bellow:
+3. Create a file in the root folder of the project and name it `cypress.env.json`, in the file copy and paste the code bellow:
    ```JS
    {
     "API_URL": "https://gateway.marvel.com:443/v1/public",
