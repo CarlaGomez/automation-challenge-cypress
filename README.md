@@ -37,7 +37,7 @@ The test cases are documented in the test management tool TestBench. To access t
 ### Pre-requisites
 
 * Node.js needs to be installed
-* If you are using a Mac, go to the `package.json` and in scripts replace the allure:clear command with this one `"allure:clear": "rm -r allure-results/ allure-report cypress/videos || true"`
+* If you are using a Mac, go to the `package.json`, in scripts replace the cy:run command with `"yarn cypress run --env allure=true"` and the allure:clear command with this one `"allure:clear": "rm -r allure-results/ allure-report cypress/videos || true"`
 * Go to https://developer.marvel.com and create an account to get a public and a private API key (This is Optional, is required for step 3 of intallation)
 
 ### installation
