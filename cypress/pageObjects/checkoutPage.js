@@ -1,11 +1,11 @@
 class Checkout {
-
+    
     addToCart(){
-        return cy.get('#add_to_cart > .exclusive');
+        return cy.get('#add_to_cart > .exclusive').should('be.visible');
     }
 
     succesfulMessage(){
-        return cy.get('.layer_cart_product > h2');
+        return cy.get('.layer_cart_product > h2').should('be.visible');
     }
     
     closeModal(){
@@ -13,7 +13,7 @@ class Checkout {
     }
 
     goToCart(){
-        return cy.get('[title="View my shopping cart"]');
+        return cy.get('[title="View my shopping cart"]').should('be.visible');
     }
     
     proceedToCheckout(){
@@ -29,10 +29,8 @@ class Checkout {
     }
 
     //Assertions 
-
     cartQuantity(){
         return cy.get('.cart_quantity');
     }
 }
-
 export default Checkout;

@@ -1,16 +1,12 @@
 {
     "firstName":"Carla",
     "lastName":"Gomez",
-    "password":"Test1234",
     "dayOfBirth":"15",
     "monthOfBirth":"November",
     "yearOfBirth":"1997",
-    "address":"8400 NW 25 ST SUITE 100",
-    "city":"Doral",
     "postalCode":"33198",
     "country":"United States",
     "state":"Florida",
-    "mobilePhone":"15042010052",
-    "alias":"Alias"
+    "mobilePhone":"15042010052"
   }
   

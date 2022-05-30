@@ -1,11 +1,11 @@
 class Search {
-
+    
     category(){
-        return cy.get('ul.submenu-container.clearfix.first-in-line-xs');
+        return cy.get('ul.submenu-container.clearfix.first-in-line-xs').eq(0);
     }
 
-    subcategory(){
-        return cy.get('.sf-menu li li li a').contains('Evening');
+    subcategory(text){
+        return cy.get('.sf-menu li li li a').contains(text);
     }
 
     searchBar(){
@@ -17,14 +17,15 @@ class Search {
     }
 
     itemList(){
-        return cy.get('#center_column').find('.product-name');
+        return cy.get('#center_column').find('.product-name').should('be.visible').and('exist');
     }
 
     //Assertions
 
     visitedCategory(){
-        return cy.get('.cat-name');
+        return cy.get('.cat-name')
+        .should('be.visible')
+        .should('contain.text', 'Evening Dresses');
     }
 }
-
 export default Search;

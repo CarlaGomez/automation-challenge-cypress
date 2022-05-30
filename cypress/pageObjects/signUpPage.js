@@ -1,19 +1,18 @@
 class SignUpPage {
     
     signUpButton(){
-        return cy.get('.login');
+        return cy.get('.login').should('be.visible').click();
     }
 
     email(){
-        return cy.get('[data-validate=isEmail]').eq(0);
+        return cy.get('[data-validate=isEmail]');
     }
 
     createAccount(){
-        return cy.get('#SubmitCreate > span');
+        return cy.get('#SubmitCreate > span').should('be.visible');
     }
 
     //Get all the elements related to the personal information
-
     title(){
         return cy.get('#id_gender1');
     }
@@ -47,7 +46,6 @@ class SignUpPage {
     }
 
     //Get all the elements related to the address
-
     firstName(){
         return cy.get('#firstname')
     }
@@ -89,10 +87,8 @@ class SignUpPage {
     }   
 
     // Assertions 
-
-    account(){
-        return cy.get('.account');
+    verifyAccount(){
+        return cy.get('.account').should('be.visible');
     }
 }
-
 export default SignUpPage;

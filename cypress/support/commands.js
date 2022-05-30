@@ -34,26 +34,25 @@ const PASSWORD = Cypress.env('PASSWORD');
 
 Cypress.Commands.add('login', () => { 
     cy.visit('/')
-    signUp.signUpButton().should('be.visible').click();
-    cy.get('[data-validate=isEmail]').eq(1).type(USER_NAME)
-    cy.get('[data-validate=isPasswd]').type(PASSWORD)
-    cy.get('button[type=submit]').contains('Sign in').click()
-    signUp.account().should('be.visible');
+    signUp.signUpButton();
+    signUp.email().eq(1).type(USER_NAME);
+    signUp.password().type(PASSWORD);
+    cy.get('button[type=submit]').contains('Sign in').click();
+    signUp.verifyAccount().should('have.text', 'Carla Gomez');
 })
 
-Cypress.Commands.add('searches', () => {
-    search.searchBar().type('Dress{Enter}');
+Cypress.Commands.add('searches', (item) => {
+    search.searchBar().type(item);
 })
 
 Cypress.Commands.add('viewItem', () => {
-    cy.searches()
-    search.itemList().should('be.visible')
-        .should('exist')
+    cy.searches('Dress{Enter}')
+    search.itemList()
         .should('have.length', 7)
         .eq(0)
         .click();
 })
 
 Cypress.Commands.add('logout', () => { 
-    cy.get('.logout').click()
+    cy.get('.logout').click();
 })
