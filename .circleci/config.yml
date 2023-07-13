@@ -44,4 +44,4 @@ jobs:
           path: cypress/screenshots
       - store_artifacts:
           name: Uploading allure-report artifacts
-          path: allure-report
+          path: allure-report 
